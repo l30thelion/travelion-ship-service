@@ -1,4 +1,4 @@
-#References
+References
 
 The Couchbase Blog
 
