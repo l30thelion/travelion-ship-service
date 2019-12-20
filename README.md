@@ -16,4 +16,4 @@ Spring Kotlin Coroutines
 
     https://spring.io/blog/2019/04/12/going-reactive-with-spring-coroutines-and-kotlin-flow
     
-    https://docs.spring.io/spring/docs/5.2.0.BUILD-SNAPSHOT/spring-framework-reference/languages.html#coroutines
+    https://docs.spring.io/spring/docs/current/spring-framework-reference/languages.html#coroutines
