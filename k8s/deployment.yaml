@@ -1,0 +1,53 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: travelion-ship-service
+  labels:
+    app: travelion-ship-service
+    version: "v1.0.0"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: travelion-ship-service
+  template:
+    metadata:
+      labels:
+        app: travelion-ship-service
+        version: "v1.0.0"
+      annotations:
+        field.cattle.io/workloadMetrics: '[{"path":"/actuator/prometheus","port":8080,"schema":"HTTP"}]'
+    spec:
+      containers:
+        - name: travelion-ship-service
+          image: travelion-ship-service
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 512M
+              cpu: "500m"
+            limits:
+              memory: 512M
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: "/actuator/info"
+              port: 8080
+              scheme: "HTTP"
+            failureThreshold: 5
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: "/actuator/health"
+              port: 8080
+              scheme: "HTTP"
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 15

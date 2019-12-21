@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: travelion-ship-service
+  labels:
+    app: travelion-ship-service
+spec:
+  ports:
+    - name: http
+      port: 8080
+  selector:
+    app: travelion-ship-service

@@ -1,0 +1,13 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: travelion-ship-service
+spec:
+  hosts:
+    - cloud-test.k8s.rccl.com
+  gateways:
+    - cloud-test-ingress-gateway.istio-system.svc.cluster.local
+  http:
+    - route:
+        - destination:
+            host: travelion-ship-service

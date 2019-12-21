@@ -1,6 +1,7 @@
 package l30thelion.travelion.shipservice.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import l30thelion.travelion.shipservice.SailingRepository.Sailing
 import org.springframework.data.annotation.Id
 import org.springframework.data.couchbase.core.mapping.Document
 import org.springframework.data.couchbase.core.mapping.id.GeneratedValue
@@ -31,7 +32,9 @@ data class Ship(
         @field:NotNull(message = "name is required")
         val name: String?,
 
-        val description: String?
+        val description: String? = null,
+
+        val sailings: List<Sailing> = emptyList()
 
 ) {
     companion object {
